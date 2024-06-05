@@ -1,0 +1,19 @@
+.student-info-container{
+    text-align: center;
+    margin-top: 50px;
+    background-color: ivory;
+}
+
+.student-name{
+    font-size: 24px;
+    color:rgb(175, 28, 40);
+}
+
+.github-link a {
+    color:darkblue;
+    text-decoration: solid;
+}
+
+.github-link a:hover{
+    text-decoration: underline;
+}
