@@ -2,10 +2,10 @@
 const Item = ({name, quantity, category}) => {
     return (
        <div className="container mx-auto">
-        <ul className="flex flex-col md:flex-row md:flex-wrap -mx-2">
-        <li className="bg-slate-900 m-2 p-2 flex-1 sm:flex-none sm:w-1/2 lg:w-1/4 ">
-            <h2 className="font-bold text-xl text-white">{name}</h2>
-            <p className="font-normal text-sm text-white">Buy {quantity} in {category}</p>
+        <ul className="flex flex-col md:flex-row md:flex-wrap -mx-2 rounded">
+        <li className="bg-white m-2 p-4 flex-wrap md:flex-none mx:w-full rounded-lg shadow-lg hover:bg-blue-50 transition duration-300">
+            <h2 className="font-bold text-xl text-gray-800">{name}</h2>
+            <p className="font-normal text-sm text-gray-600">Buy {quantity} in {category}</p>
             
         </li>
         </ul>
