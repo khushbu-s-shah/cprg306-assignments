@@ -8,14 +8,18 @@ import itemsData from '../week-8/items.json';
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState(null);
+  const [selectedItemName, setSelectedItemName] = useState('');
 
   const handleAddItem = (newItem) => {
     setItems([...items, newItem]);
   };
 
   const handleItemSelect = (item) => {
-    setSelectedItemName(item.name.trim());
+    const cleanedName = item.name
+      .split(',')[0]
+      .trim()
+      .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|�[�-�]|�[�-�]|[\u2011-\u26FF]|�[�-�])/g, '');
+    setSelectedItemName(cleanedName);
   };
 
   return (
@@ -23,12 +27,12 @@ export default function Page() {
       <header className='text-center my-6'>
         <h1 className="text-4xl text-gray-800 font-bold">Shopping List</h1>
       </header>
-      <div className="flex flex-col lg:flex-row justify-between">
-        <div className="lg:w-1/2 p-4">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-1/2">
           <NewItem onAddItem={handleAddItem} />
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </div>
-        <div className="lg:w-1/2 p-4">
+        <div className="md:w-1/2 mt-6 md:mt-0 md:ml-4">
           {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
         </div>
       </div>
