@@ -8,7 +8,7 @@ import itemsData from '../week-8/items.json';
 
 export default function Page() {
   const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState('');
+  const [selectedIngredient, setSelectedIngredient] = useState(null);
 
   const handleAddItem = (newItem) => {
     setItems([...items, newItem]);
@@ -18,7 +18,7 @@ export default function Page() {
     const cleanedName = item.name
       .split(',')[0]
       .trim()
-      .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|�[�-�]|�[�-�]|[\u2011-\u26FF]|�[�-�])/g, '');
+      .replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g, '');
     setSelectedItemName(cleanedName);
   };
 
@@ -33,9 +33,9 @@ export default function Page() {
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </div>
         <div className="md:w-1/2 mt-6 md:mt-0 md:ml-4">
-          {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+          {selectedIngredient && <MealIdeas ingredient={selectedIngredient} />}
         </div>
       </div>
     </main>
   );
-}
+};
