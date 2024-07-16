@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Item from '../week-8/item';
 
-export default function ItemList({ items, onAddItem, onItemSelect }) {
+export default function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState('name');
 
   const sortedItems = [...items].sort((a, b) => {
@@ -32,14 +32,12 @@ export default function ItemList({ items, onAddItem, onItemSelect }) {
         >
           Sort by Name
         </button>
-
         <button
           className={`block sm:inline-block md:text-xl m-2 px-4 py-2 rounded-full text-white shadow ${sortBy === 'category' ? 'bg-gradient-to-tr from-violet-400 to-green-400' : 'bg-green-500'}`}
           onClick={() => setSortBy('category')}
         >
           Sort by Category
         </button>
-
         <button
           className={`block sm:inline-block md:text-xl m-2 px-4 py-2 rounded-full text-white shadow ${sortBy === 'group' ? 'bg-gradient-to-tr from-violet-400 to-green-400' : 'bg-green-500'}`}
           onClick={() => setSortBy('group')}
